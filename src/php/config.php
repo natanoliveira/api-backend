@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 date_default_timezone_set('America/Fortaleza');
 header('Access-Control-Allow-Origin: *');
 
@@ -7,7 +7,7 @@ $config["em_teste"] = ($_SERVER['HTTP_HOST'] == 'localhost') ? true : false;
 
 $IP_BROWSER = (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER["REMOTE_ADDR"];
 
-$PROTOCOLO_HTTP = 'https://';
+$PROTOCOLO_HTTP = 'http://';
 
 if ($config["em_teste"]) {
 
@@ -15,7 +15,7 @@ if ($config["em_teste"]) {
     $config["SITE"] = $PROTOCOLO_HTTP . "localhost/desafio-pushstart/";
 
     # DIRETORIO PARA RECUPERAR UPLOAD DE ARQUIVOS
-    $config["Caminho_Upload"] = $config["SITE"] . "upload/";
+    $config["Caminho_Upload"] = $config["SITE"] . "api-backend/upload/";
 
     # BANCO DE DADOS
     $config["BD"] = "pushstart";
