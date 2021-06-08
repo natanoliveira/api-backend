@@ -1,0 +1,24 @@
+Options -Indexes
+
+#Change default directory page
+#DirectoryIndex index.php
+
+#Prevent viewing of .htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+#Prevent directory listings
+Options All -Indexes
+
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-l
+
+#RewriteRule ^usuario\/([a-z,0-9,A-Z,_-]+)\/([a-z,0-9,A-Z,_-]+)\/?$ usuario.php?id=$1&id=$2 [nc,qsa]
+
+#RewriteRule ^usuario\/?$ usuario.php
+
+#RewriteRule ^usuario\/([a-z,0-9,A-Z,_-]+)\/?$ usuario.php?id=$1 [nc,qsa]

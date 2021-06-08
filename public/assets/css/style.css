@@ -1,0 +1,50 @@
+/*
+Pricing
+*/
+html {
+    font-size: 14px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  .container {
+    max-width: 960px;
+  }
+  
+  .pricing-header {
+    max-width: 700px;
+  }
+  
+  .card-deck .card {
+    min-width: 220px;
+  }
+  
+  .border-top { border-top: 1px solid #e5e5e5; }
+  .border-bottom { border-bottom: 1px solid #e5e5e5; }
+  
+  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+  /*
+  Implementações, substituições
+  */
+.btn-primary {
+    background-color: #6d3581;
+    border-color: #6d3581;
+}
+
+.btn-primary:hover, 
+.btn-primary:visited, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #5f2574;
+    border-color: #5f2574;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgb(95 39 116 / 64%);
+}
