@@ -23,10 +23,12 @@ Foi utilizado:
 
 # Pacote
 Nas pastas:
-- /db - Documetnação de base de dados;
+- /db - Artefatos como DE-R e script de importação de base de dados;
 - /helpers - Scripts pertinentes a funções efetivas e auxiliares para a(s) aplicação(ções);
 - /src  - Está toda API e configuração da mesma;
 - /src/upload/ - Somente a(s) pasta(s) e arquivos referentes a improtação de imagens;
+- /src/php/ - Script de conexão e configuração para API;
+- /src/doc/ - Artefato .json exportado pelo Insomnia com os disparos das verboses;
 - /public - Parte do front-end com interface para utilziação (inacabado);
 
 
