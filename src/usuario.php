@@ -68,7 +68,7 @@ if (
             $cond = "1=1";
         }
 
-        $sql = "SELECT nome, email, avatar AS avatar_url, nome_perfil FROM $tabela_base WHERE $cond ORDER BY id";
+        $sql = "SELECT id, nome, email, avatar AS avatar_url, nome_perfil, token FROM $tabela_base WHERE $cond ORDER BY id";
 
         $rs_sql = mysqli_query($conexao, $sql);
 
@@ -121,6 +121,8 @@ if (
                 list($imagem_nome_sem_extensao, $extensao) = explode(".", $imagem_nome);
                 $imagem_hash = sha1($imagem_nome_sem_extensao) . "." . $extensao;
 
+                $pasta_usuario = $diretorio_upload . "usuario/";
+
                 // VALIDANDO A EXTENSÃO DO ARQUIVO
                 if (in_array($extensao, $extensao_arquivo)) {
 
@@ -128,7 +130,7 @@ if (
                     if ($imagem_tamanho < $tamanho_arquivo) {
 
                         // MOVE PARA O DIRETÓRIO DE IMAGENS
-                        if (move_uploaded_file($imagem_nome_temporario, $diretorio_upload . $imagem_hash)) {
+                        if (move_uploaded_file($imagem_nome_temporario, $pasta_usuario . $imagem_hash)) {
 
                             // PREPARANDO PARA GRAVAR A URL DA IMAGEM NA COLUNA 'AVATAR' DA TABELA
                             $url_avatar = CAMINHO_UPLOAD . $imagem_hash;
@@ -227,7 +229,7 @@ if (
                 // GERANDO HASH DE SENHA
                 $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
 
-                // FRAGMENTANDO O NOME PARA AMOSTRAGEM REDUZIDA NO PERFIL
+                // FRAGMENTANDO O NOME (NOME + SOBRENOME) PARA AMOSTRAGEM REDUZIDA NO PERFIL
                 $fragmento = explode(" ", $nome);
                 $nome_perfil = $fragmento[0] . " " . end($fragmento);
 
@@ -303,7 +305,7 @@ if (
                     // ADICIONA A SESSÃO DA CONTA EM BASE DE DADOS
                     $sql = "INSERT INTO $tabela_sessao SET "
                         . "usuario_id = '$usuario_id', "
-                        . "session_id = '$session_id', "
+                        . "sessao_id = '$session_id', "
                         . "tempo_inicial = '$tempo_inicial', "
                         . "data_acesso = '$data_acesso';";
 
@@ -443,9 +445,13 @@ if (
 
             if ($num_linhas >= 1) {
 
-                $rs_sessao = mysqli_query($conexao, "DELETE FROM $tabela_sessao WHERE usuario_id = '$id';");
+                $ultimo_acesso = date('Y-m-d H:i:s');
 
-                if ($rs_sessao) {
+                $rs_ultimo_acesso = mysqli_query($conexao, "UPDATE $tabela_base SET ultimo_acesso = '$ultimo_acesso' WHERE id = '$id';");
+
+                if ($rs_ultimo_acesso) {
+
+                    $rs_sessao = mysqli_query($conexao, "DELETE FROM $tabela_sessao WHERE usuario_id = '$id';");
 
                     if (isset($_SESSION['logado'])) session_destroy();
 
