@@ -1,3 +1,7 @@
+<?php
+include('../helpers/helpers.php');
+include('verify.php');
+?>
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="https://pushstart.com.br/favicon-32x32.png?v=d8a94433f082ec4909821d4d40678b50">
 
-    <title>Painel :: Push Start</title>
+    <title>Dashboard :: Push Start</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -20,19 +24,21 @@
 <body>
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal">PUSHSTART</h5>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="#">Features</a>
+            <a class="p-2 text-dark" href="#">Usuários</a>
+            <?php /* ?>
             <a class="p-2 text-dark" href="#">Enterprise</a>
             <a class="p-2 text-dark" href="#">Support</a>
             <a class="p-2 text-dark" href="#">Pricing</a>
+            <?php */ ?>
         </nav>
-        <a class="btn btn-outline-primary" href="#">Sign up</a>
+        <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLogout" href="javascript:void(0);">Sair</a>
     </div>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Pricing</h1>
-        <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+        <h1 class="display-4">Seja Bem vindo <i><?= $usuario_nome_perfil ?></i></h1>
+        <p class="lead">Seu último acesso foi em <?= DataBancoApp($usuario_ultimo_acesso) ?></p>
     </div>
 
     <div class="container">
@@ -123,6 +129,25 @@
         </footer>
     </div>
 
+    <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente sair do sistema?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btn-logout">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -139,6 +164,11 @@
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
+        });
+
+        $("#btn-logout").click(function() {
+
+
         });
     </script>
 </body>

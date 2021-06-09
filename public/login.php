@@ -28,7 +28,7 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="***" required>
         <br />
         <button class="btn btn-lg btn-primary btn-block" id="bt-entrar" type="submit">Entrar</button>
-        <input type="hidden" name="action" value="2">
+        <input type="hidden" name="acao" value="2">
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
 
@@ -55,7 +55,7 @@
                 var form_data = $('#form-signin').serialize();
 
                 $.ajax({
-                    url: "processa.php",
+                    url: "process.php",
                     type: "POST",
                     data: form_data,
                     xhrFields: {
@@ -74,6 +74,7 @@
                         if (res.status == 1) {
                             //  MENSAGEM QUE FOI ENVIADO
                             // mensagem = "Mensagem enviada. Entraremos em contato o mais breve possível.";
+                            location.href = res.redirect;
 
                         } else {
                             // MENSAGEM DE VALIDAÇÃO
