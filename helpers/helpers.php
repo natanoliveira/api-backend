@@ -672,9 +672,9 @@ function format_size($size)
 /*
     Disparo de endpoints para api
 */
-function CURL_API($METODO, $HEADERS = array(), $POST = array(), $ENDPOINT)
+function CURL_API($METODO, $HEADERS = array(), $DADOS, $ENDPOINT)
 {
-    echo $ENDPOINT;
+    // echo $ENDPOINT;
 
     $curl = curl_init();
 
@@ -687,7 +687,7 @@ function CURL_API($METODO, $HEADERS = array(), $POST = array(), $ENDPOINT)
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => $METODO,
-        CURLOPT_POSTFIELDS => $POST,
+        CURLOPT_POSTFIELDS => $DADOS,
         CURLOPT_HTTPHEADER => $HEADERS,
         CURLOPT_SSL_VERIFYPEER => 0,
         CURLOPT_SSL_VERIFYHOST => 0,
