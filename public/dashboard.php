@@ -1,6 +1,8 @@
 <?php
+include('php/config.php');
 include('../helpers/helpers.php');
 include('verify.php');
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,8 +39,12 @@ include('verify.php');
     </div>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Seja Bem vindo <i><?= $usuario_nome_perfil ?></i></h1>
-        <p class="lead">Seu último acesso foi em <?= DataBancoApp($usuario_ultimo_acesso) ?></p>
+        <h2 class="display-5">Seja Bem vindo <i><?= $usuario_nome_perfil ?></i></h2>
+        <?php if ($usuario_ultimo_acesso != '') { ?>
+            <p class="lead">Seu último acesso foi em <?= DataBancoApp($usuario_ultimo_acesso) ?></p>
+        <?php } else { ?>
+            <p class="lead">Seu primeiro acesso à nossa plataforma</p>
+        <?php } ?>
     </div>
 
     <div class="container">
@@ -132,19 +138,23 @@ include('verify.php');
     <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Deseja realmente sair do sistema?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                    <button type="button" class="btn btn-primary" id="btn-logout">Sim</button>
-                </div>
+                <form action="logout.php" method="post">
+                    <input type="hidden" name="uid" value="<?= base64_encode($usuario_id) ?>">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        Deseja realmente sair do sistema?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <button type="suubmit" class="btn btn-primary" id="btn-logout">Sim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -152,10 +162,11 @@ include('verify.php');
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script>
         window.jQuery || document.write('<script src="assets/js/jquery-slim.min.js"><\/script>')
     </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/holder.min.js"></script>
@@ -166,10 +177,53 @@ include('verify.php');
             text: 'Thumbnail'
         });
 
-        $("#btn-logout").click(function() {
+        // $(document).ready(function() {
 
+        //     $("#btn-logout").click(function() {
 
-        });
+        //         $('#btn-logout').attr('disabled', true);
+
+        //         $.ajax({
+        //             url: "process.php",
+        //             type: "POST",
+        //             data: {
+        //                 id: <?= $usuario_id ?>,
+        //                 acao: 3,
+        //             },
+        //             beforeSend: function() {
+        //                 $('#btn-logout').empty().html('Saindo...');
+        //             },
+        //             success: function(result) {
+
+        //                 var res = JSON.parse(result);
+        //                 var mensagem = "";
+
+        //                 if (res.status == 1) {
+        //                     //  MENSAGEM QUE FOI ENVIADO
+        //                     window.location.href = "'" + res.redirect + "'";
+
+        //                 } else {
+        //                     // MENSAGEM DE VALIDAÇÃO
+        //                     if (res.message != '') {
+        //                         mensagem = res.message;
+        //                     } else {
+        //                         mensagem = "Aconteceu um problema! - Mensagem não enviada!";
+        //                     }
+        //                 }
+
+        //                 $('#btn-logout').empty().html('Sim');
+        //                 $('#btn-logout').removeAttr('disabled');
+        //             },
+        //             error: function(jqXHR, textStatus, ex) {
+        //                 alert(textStatus + "," + ex + "," + jqXHR.responseText);
+        //                 $('#btn-logout').removeAttr('disabled');
+        //             },
+        //             done: function(result) {
+        //                 $('#btn-logout').removeAttr('disabled');
+        //             },
+        //         });
+        //     });
+        // });
     </script>
 </body>
 
