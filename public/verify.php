@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-echo "<pre>";
-print_r($_SESSION['logado']);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION['logado']);
+// echo "</pre>";
 
 if (isset($_SESSION['logado']) && sizeof($_SESSION['logado'])) {
 
