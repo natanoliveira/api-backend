@@ -11,7 +11,7 @@ html {
   }
   
   .container {
-    max-width: 960px;
+    /* max-width: 960px; */
   }
   
   .pricing-header {
@@ -48,3 +48,13 @@ html {
 .btn-primary.focus, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgb(95 39 116 / 64%);
 }
+
+.table, .dataTable {font-size: 12px !important;}
+.table-bordered td, .table-bordered th {
+  vertical-align: middle;
+}
+
+.dataTables_filter {
+  text-align: right;
+}
+.dataTables_paginate .pagination {float: right;}
