@@ -693,7 +693,7 @@ function CURL_API($METODO, $HEADERS = array(), $DADOS, $ENDPOINT)
         CURLOPT_SSL_VERIFYHOST => 0,
     ]);
 
-    echo $response = curl_exec($curl);
+    $response = curl_exec($curl);
     $err = curl_error($curl);
 
     curl_close($curl);

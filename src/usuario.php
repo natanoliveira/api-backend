@@ -133,7 +133,7 @@ if (
                         if (move_uploaded_file($imagem_nome_temporario, $pasta_usuario . $imagem_hash)) {
 
                             // PREPARANDO PARA GRAVAR A URL DA IMAGEM NA COLUNA 'AVATAR' DA TABELA
-                            $url_avatar = CAMINHO_UPLOAD . $imagem_hash;
+                            $url_avatar = CAMINHO_UPLOAD . "usuario/" . $imagem_hash;
 
                             // ATUALIZANDO AVATAR DO USUÁRIO
                             $sql = "UPDATE $tabela_base SET "
@@ -233,12 +233,16 @@ if (
                 $fragmento = explode(" ", $nome);
                 $nome_perfil = $fragmento[0] . " " . end($fragmento);
 
+                // GERANDO AVATAR PADRÃO
+                $url_avatar = CAMINHO_UPLOAD . "usuario/default.jpg";
+
                 // SQL DEVIDAMENTE PRONTO PARA BANCO DE DADOS
                 $sql = "INSERT INTO $tabela_base SET "
                     . "nome = UPPER('$nome'), "
                     . "nome_perfil = UPPER('$nome_perfil'), "
                     . "token = '$token', "
                     . "email = '$email', "
+                    . "avatar = '$url_avatar', "
                     . "senha = '$hash_senha'";
 
                 $rs_sql = mysqli_query($conexao, $sql);

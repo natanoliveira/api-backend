@@ -15,7 +15,7 @@ if ($config["em_teste"]) {
     $config["SITE"] = $PROTOCOLO_HTTP . "localhost/desafio-pushstart/";
 
     # DIRETORIO PARA RECUPERAR UPLOAD DE ARQUIVOS
-    $config["Caminho_Upload"] = $config["SITE"] . "api-backend/upload/";
+    $config["Caminho_Upload"] = $config["SITE"] . "api-backend/src/upload/";
 
     # BANCO DE DADOS
     $config["BD"] = "pushstart";
@@ -34,7 +34,7 @@ if ($config["em_teste"]) {
     $config["SITE"] = $PROTOCOLO_HTTP . "www.pushstart.natanoliveira.com.br/";
 
     # DIRETORIO PARA RECUPERAR UPLOAD DE ARQUIVOS
-    $config["Caminho_Upload"] = $PROTOCOLO_HTTP . "app.carlarejane.com.br/upload/";
+    $config["Caminho_Upload"] = $PROTOCOLO_HTTP . "www.pushstart.natanoliveira.com.br/upload/";
 
     # BANCO DE DADOS
     $config["BD"] = "";
