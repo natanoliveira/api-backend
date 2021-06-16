@@ -30,9 +30,15 @@ html {
   /*
   Implementações, substituições
   */
+
 .btn-primary {
     background-color: #6d3581;
     border-color: #6d3581;
+}
+
+.btn-outline-primary {
+  border-color: #6d3581;
+  color: #6d3581;
 }
 
 .btn-primary:hover, 
@@ -45,9 +51,23 @@ html {
     border-color: #5f2574;
 }
 
-.btn-primary.focus, .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgb(95 39 116 / 64%);
+.btn-outline-primary:hover, 
+.btn-outline-primary:visited, 
+.btn-outline-primary:focus, 
+.btn-outline-primary:active, 
+.btn-outline-primary:not(:disabled):not(.disabled).active, 
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #5f2574;
+    border-color: #5f2574;
+    color: #fff;
 }
+
+.btn-primary.focus, .btn-primary:focus, .btn-outline-primary.focus, .btn-outline-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgb(95 39 116 / 64%);
+    /* color: #6d3581; */
+}
+
+/* .btn-primary:not(:disabled):not(.disabled), .btn-outline-primary:not(:disabled):not(.disabled) {color: #fff;} */
 
 .table, .dataTable {font-size: 12px !important;}
 .table-bordered td, .table-bordered th {

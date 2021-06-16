@@ -10,6 +10,39 @@ include(TEMPLATE . 'header.php');
 <div class="card-deck mb-3 text-center">
     <div class="card mb-4 box-shadow">
         <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Usuário</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <li>Listagem de usuários</li>
+            </ul>
+            <a href="user.php" class="btn btn-lg btn-block btn-primary">Acesse</a>
+        </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Cessionário</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <li>Listagem de cessionários</li>
+            </ul>
+            <a href="javascript:void(0);" class="btn btn-lg btn-block btn-primary">Acesse</a>
+        </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Contratos</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+                <li>Listagem de Contrato</li>
+            </ul>
+            <a href="javascript:void(0);" class="btn btn-lg btn-block btn-primary">Acesse</a>
+        </div>
+    </div>
+    <!-- <div class="card mb-4 box-shadow">
+        <div class="card-header">
             <h4 class="my-0 font-weight-normal">Free</h4>
         </div>
         <div class="card-body">
@@ -52,7 +85,7 @@ include(TEMPLATE . 'header.php');
             </ul>
             <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <?php include(TEMPLATE . 'footer.php');
