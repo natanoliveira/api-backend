@@ -32,14 +32,19 @@ $SCRIPT_PAGINA = end($quebra_pag);
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
         <h5 class="my-0 mr-md-auto font-weight-normal">PUSHSTART</h5>
         <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="dashboard.php">Dashboard</a>
             <a class="p-2 text-dark" href="user.php">Usuários</a>
             <?php /* ?>
             <a class="p-2 text-dark" href="#">Enterprise</a>
-            <a class="p-2 text-dark" href="#">Support</a>
-            <a class="p-2 text-dark" href="#">Pricing</a>
             <?php */ ?>
+            <?php if ($usuario_primeiro_nome != '') { ?>
+                <a class="p-2 text-dark disabled" href="javascript:void(0);">
+                    <?= $usuario_primeiro_nome ?>
+                </a>
+            <?php } ?>
         </nav>
         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLogout" href="javascript:void(0);">Sair</a>
+
     </div>
 
     <?php if ($SCRIPT_PAGINA == "dashboard.php") { ?>

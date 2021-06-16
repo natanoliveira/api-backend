@@ -23,5 +23,9 @@ if (!empty($_POST['uid'])) {
     } else {
         echo "<script>alert('" . $resp_api['mensagem'] . "');</script>";
     }
+} else {
+    session_destroy();
+    unset($_SESSION['logado']);
+    header('Location: login.php');
 }
-exit();
+// exit();
